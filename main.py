@@ -1,11 +1,13 @@
 #Create an rpg game that give messages along the way
-
 import os
 import Player
+import Enemy
+
 from utils import Mesaje as m
 m.intro() # we import the intro function from utils.py
 from utils import Music as ms
 ms.menu_music() # we import the menu_music function from utils.py
+
 print("Would you like to start the adventure? Y/N")
 user_answer = input("Yes or No? -> ")
 if user_answer.upper() == "Y" or user_answer.lower() == "y":
@@ -46,3 +48,4 @@ from utils import Music as ms
 ms.explore_music() # we import the explore_music function from utils.py
 from utils import Mesaje as m
 m.crossroads() # we import the crossroads function from utils.py
+

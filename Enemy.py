@@ -14,21 +14,21 @@ class Enemy:
 
 class Goblin(Enemy):
     def __init__(self):
-        super(Goblin, self).__init__(100, 5)
+        super(Goblin, self).__init__(99, 5)
         words = 'Glglg!!! I am a Goblin and I will slash you!!!'
         delay(words)
 
 
 class Orc(Enemy):
     def __init__(self):
-        super(Orc, self).__init__(100, 15)
+        super(Orc, self).__init__(98, 15)
         words = 'Wrarr, I am an Orc and I will cut you down!'
         delay(words)
 
 
 class Rat(Enemy):
     def __init__(self):
-        super(Rat, self).__init__(100, 10)
+        super(Rat, self).__init__(97, 10)
         words = 'Squil, I am a Rat and I will eat you up!'
         delay(words)
 

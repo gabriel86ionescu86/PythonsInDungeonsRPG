@@ -123,6 +123,7 @@ def in_the_desert():
 
 # @staticmethod
 def battle_intro():
+    enemy = ''
     battle_music()  # we import the explore_music function from utils.py
     print('From the underground an enemy appears!')
     random_number = random.randint(0, 2)
@@ -135,6 +136,7 @@ def battle_intro():
     print()
     input('Press enter to continue...')
     os.system('clear')
+    return enemy
 
 
 # @staticmethod
@@ -145,34 +147,45 @@ def battle_begins():
         print("You will attack first!")
         input('Press enter to continue')
         os.system('clear')
-        # wip, need to call the Battle.player_attacks()
+        player_attacks()
     else:
         print("The enemy attacks first! ")
         input('Press enter to continue')
         os.system('clear')
-        # wip, need to call the Battle.enemy_attacks()
-        pass
+        enemy_attacks()
+    return
+
+def player_attacks():
+    myself = player_type()
+    him = battle_intro()
+    print(f"Eu health ->> {myself.health}")
+    print(f"Eu damage ->> {myself.damage}")
+    print(f"Inamicul health ->> {him.health}")
+    print(f"Inamicul damage ->> {him.damage}")
+    while myself.health != 0 or him.health != 0:
+        him.health -= myself.damage
+        myself.health -= him.damage
+    if myself.health == 0:
+        print("You were defeated. Game over!")
+        exit()
+    else:
+        print("You have won the battle!")
+    return
 
 
-# @staticmethod
-# def player_attacks():
-#     while player.health != 0 or enemy.health != 0:
-#         Enemy.Enemy(health) -= Player.Player(health)
-#         Player.Player(health) -= Enemy.Enemy(damage)
-#     if Player.Player(health) == 0:
-#         print("You were defeated. Game over!")
-#         exit()
-#     else:
-#         print("You have won the battle!")
-
-
-# @staticmethod
-# def enemy_attacks:
-#     while player.health != 0 or enemy.health != 0:
-#         Player.Player(health) -= Enemy.Enemy(damage)
-#         Enemy.Enemy(health) -= Player.Player(health)
-#     if Player.Player(health) == 0:
-#         print("You were defeated. Game over!")
-#         exit()
-#     else:
-#         print("You have won the battle!")
+def enemy_attacks():
+    myself = player_type()
+    him = battle_intro()
+    print(f"Eu health ->> {myself.health}")
+    print(f"Eu damage ->> {myself.damage}")
+    print(f"Inamicul health ->> {him.health}")
+    print(f"Inamicul damage ->> {him.damage}")
+    while myself.health != 0 or him.health != 0:
+        myself.health -= him.damage
+        him.health -= myself.damage
+    if myself.health == 0:
+        print("You were defeated. Game over!")
+        exit()
+    else:
+        print("You have won the battle!")
+    return

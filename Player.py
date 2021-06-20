@@ -11,7 +11,7 @@ class Player:
 
 class Warrior(Player):
     def __init__(self, name):
-        super().__init__(name, 0, 100, 50)
+        super().__init__(name, 0, 105, 50)
 
 
 class Wizzard(Player):

@@ -5,7 +5,6 @@ import Enemy
 import Player
 
 
-# @staticmethod
 def intro():
     print(
 '''****************************************************************************************
@@ -17,7 +16,6 @@ def intro():
         ''')
 
 
-# @staticmethod
 def crossroads():
     os.system('clear')
     print(
@@ -37,7 +35,6 @@ You have 3 paths in front of you:
     return path_option
 
 
-# @staticmethod
 def player_type():
     player = ''
     answer = input(
@@ -67,10 +64,9 @@ What is your name? --> ''')
         input("Press enter to continue...")
         os.system('clear')
         print('Loading...')
-    return player
+    return
 
 
-# @staticmethod
 def menu_music():
     pygame.init()
     pygame.mixer.init()
@@ -79,7 +75,6 @@ def menu_music():
     sound.play()
 
 
-# @staticmethod
 def explore_music():
     pygame.init()
     pygame.mixer.init()
@@ -88,7 +83,6 @@ def explore_music():
     sound.play()
 
 
-# @staticmethod
 def battle_music():
     pygame.init()
     pygame.mixer.init()
@@ -97,7 +91,6 @@ def battle_music():
     sound.play()
 
 
-# @staticmethod
 def in_the_village():
     os.system('clear')
     print("You are in the village...")
@@ -105,7 +98,6 @@ def in_the_village():
     os.system('clear')
 
 
-# @staticmethod
 def in_the_forrest():
     os.system('clear')
     print("You are in the forrest...")
@@ -113,7 +105,6 @@ def in_the_forrest():
     os.system('clear')
 
 
-# @staticmethod
 def in_the_desert():
     os.system('clear')
     print("You are in the desert...")
@@ -121,7 +112,6 @@ def in_the_desert():
     os.system('clear')
 
 
-# @staticmethod
 def battle_intro():
     enemy = ''
     battle_music()  # we import the explore_music function from utils.py
@@ -139,7 +129,6 @@ def battle_intro():
     return enemy
 
 
-# @staticmethod
 def battle_begins():
     print("First round of attack")
     random_number = random.randint(0, 1)
@@ -155,35 +144,37 @@ def battle_begins():
         enemy_attacks()
     return
 
+
 def player_attacks():
-    myself = player_type()
-    him = battle_intro()
-    print(f"Eu health ->> {myself.health}")
-    print(f"Eu damage ->> {myself.damage}")
-    print(f"Inamicul health ->> {him.health}")
-    print(f"Inamicul damage ->> {him.damage}")
-    while myself.health != 0 or him.health != 0:
-        him.health -= myself.damage
-        myself.health -= him.damage
-    if myself.health == 0:
+    a = player_type().health
+    b= player_type().damage
+    c= battle_intro().health
+    d= battle_intro().damage
+    print(f"Eu health ->> {a}")
+    print(f"Eu damage ->> {b}")
+    print(f"Inamicul health ->> {c}")
+    print(f"Inamicul damage ->> {d}")
+    while a <= 0 or c <= 0:
+        c -= b
+        a -= d
+    if a <= 0:
         print("You were defeated. Game over!")
         exit()
     else:
         print("You have won the battle!")
+    print("Lady gaga")
     return
 
 
 def enemy_attacks():
-    myself = player_type()
-    him = battle_intro()
-    print(f"Eu health ->> {myself.health}")
-    print(f"Eu damage ->> {myself.damage}")
-    print(f"Inamicul health ->> {him.health}")
-    print(f"Inamicul damage ->> {him.damage}")
-    while myself.health != 0 or him.health != 0:
-        myself.health -= him.damage
-        him.health -= myself.damage
-    if myself.health == 0:
+    a = player_type().health
+    b = player_type().damage
+    c = battle_intro().health
+    d = battle_intro().damage
+    while a <= 0 or c <= 0:
+        a -= d
+        c -= b
+    if a <= 0:
         print("You were defeated. Game over!")
         exit()
     else:
